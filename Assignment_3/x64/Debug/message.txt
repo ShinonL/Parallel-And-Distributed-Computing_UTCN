@@ -1,0 +1,222 @@
+#include <iostream>
+#include <fstream>
+#include "mpi.h"
+#include "stdio.h"
+#include "stdlib.h"
+
+using namespace std;
+
+int** init_square_matrix(int N)
+{	
+	int** mat;
+	int* p = (int*)calloc(N * N, sizeof(int*));
+	mat = (int**)calloc(N, sizeof(int*));
+
+	for (int i = 0; i < N; i++) {
+		mat[i] = &(p[i * N]);
+	}
+	return mat;
+}
+
+void print_matrix(int** matrix, int N)
+{
+	for (int i = 0; i < N; i++) {
+		for (int j = 0; j < N; j++) {
+			cout << matrix[i][j] << "\t";
+		}
+		cout << endl;
+	}
+}
+
+int main(int argc, char* argv[])
+{
+	if (argc != 4) {
+		cout << "There should 4 arguments passed to the mpiexec, except the number of proceesors" << endl;
+		cout << "The first argument should be the path to the executable" << endl;
+		cout << "The second argument should be the number of blocks " << endl;
+		cout << "The third argument should be the path to the first matrix" << endl;
+		cout << "The fourth argument should be the path to the second matrix" << endl;
+		exit(1);
+	}
+	MPI_Init(&argc, &argv);
+
+	int world_size;
+	MPI_Comm_size(MPI_COMM_WORLD, &world_size);
+
+	int world_rank;
+	MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
+
+	int N = atoi(argv[1]);
+
+	if ((sqrt(world_size) - ((int)sqrt(world_size))))
+	{
+		if (world_rank == 0)
+		{
+			cout << "Number of processes should be a perfect square" << endl;
+		}
+		MPI_Finalize();
+		return 0;
+	}
+
+	if (N % ((int)sqrt(world_size)))
+	{
+		if (world_rank == 0)
+		{
+			cout << "The square root of the number of processors should be a divisor of the number of blocks" << endl;
+			cout << "Square root of number of processors = " << ((int)sqrt(world_size)) << endl;
+			cout << "Number of rows / number of columns (blocks) = " << N << endl;
+		}
+		MPI_Finalize();
+		return 0;
+	}
+
+	int** A = NULL;
+	int** B = NULL;
+	int** C = NULL;
+
+	if (world_rank == 0) {
+		ifstream in_A(argv[2]);
+		ifstream in_B(argv[3]);
+		int M;
+		in_A >> N;
+		in_B >> M;
+		if (N != M) {
+			cout << "Matrix A and Matrix B should have the same size" << endl;
+			MPI_Finalize();
+			return 0;
+		}
+
+		A = init_square_matrix(N);
+		B = init_square_matrix(N);
+		C = init_square_matrix(N);
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < N; j++) {
+				in_A >> A[i][j];
+				in_B >> B[i][j];
+			}
+		}
+		in_A.close();
+		in_B.close();
+	}
+
+	// broadcast size of matrix to all slaves
+
+	MPI_Bcast(&N, 1, MPI_INT, 0, MPI_COMM_WORLD);
+
+	MPI_Comm comm_cart;
+	int periods[] = { 1, 1 };
+	int dims[] = { int(sqrt(world_size)), int(sqrt(world_size)) };
+	MPI_Cart_create(MPI_COMM_WORLD, 2, dims, periods, 1, &comm_cart);
+
+	int block_size = int(N / sqrt(world_size));
+	int** tmp_A = init_square_matrix(block_size);
+	int** tmp_B = init_square_matrix(block_size);
+	int** tmp_C = init_square_matrix(block_size);
+
+
+	//// Create data type for subarrays
+	MPI_Datatype type, subarray_type;
+	int global_size[] = { N, N };
+	int local_size[] = { block_size, block_size };
+	int starts[] = { 0, 0 };
+
+	MPI_Type_create_subarray(2, global_size, local_size, starts, MPI_ORDER_C, MPI_INT, &type);
+	MPI_Type_create_resized(type, 0, block_size * sizeof(int), &subarray_type);
+	MPI_Type_commit(&subarray_type);
+
+	int* global_A = NULL;
+	int* global_B = NULL;
+	int* global_C = NULL;
+
+	if (world_rank == 0) {
+		global_A = &(A[0][0]);
+		global_B = &(B[0][0]);
+		global_C = &(C[0][0]);
+	}
+
+	int* send_counts = (int*)malloc(sizeof(int) * world_size);
+	int* displacements = (int*)malloc(sizeof(int) * world_size);
+
+	if (world_rank == 0)
+	{
+		for (int i = 0; i < world_size; i++)
+		{
+			send_counts[i] = 1;
+		}
+		int disp = 0;
+		for (int i = 0; i < int(sqrt(world_size)); i++)
+		{
+			for (int j = 0; j < int(sqrt(world_size)); j++)
+			{
+				displacements[i * int(sqrt(world_size)) + j] = disp;
+				disp += 1;
+			}
+			disp += (block_size - 1) * int(sqrt(world_size));
+		}
+	}
+
+	// send initial positioning data 
+
+	MPI_Scatterv(global_A, send_counts, displacements, subarray_type, &(tmp_A[0][0]), int(N * N / (world_size)), MPI_INT, 0, MPI_COMM_WORLD);
+	MPI_Scatterv(global_B, send_counts, displacements, subarray_type, &(tmp_B[0][0]), int(N * N / (world_size)), MPI_INT, 0, MPI_COMM_WORLD);
+
+	int coord[2];
+	int left, right, up, down;
+
+	// determine cartesian coordinates
+
+	MPI_Cart_coords(comm_cart, world_rank, 2, coord);
+
+	// perform initial translation
+	// Circular movement with i positions to the left of sub matrices Ai,x
+	MPI_Cart_shift(comm_cart, 1, coord[0], &left, &right);
+	MPI_Sendrecv_replace(&(tmp_A[0][0]), block_size * block_size, MPI_INT, left, 1, right, 1, comm_cart, MPI_STATUS_IGNORE);
+	
+	// circular movement with j positions upwards of submatrices Bx, j
+	MPI_Cart_shift(comm_cart, 0, coord[1], &up, &down);
+	MPI_Sendrecv_replace(&(tmp_B[0][0]), block_size * block_size, MPI_INT, up, 1, down, 1, comm_cart, MPI_STATUS_IGNORE);
+
+	int** multiplication_result = init_square_matrix(block_size);
+
+	// partial result matrix multiplication
+	for (int i = 0; i < (int)sqrt(world_size); i++)
+	{
+		for (int j = 0; j < block_size; j++)
+		{
+			for (int k = 0; k < block_size; k++)
+			{
+				int tmp = 0;
+				for (int l = 0; l < block_size; l++)
+				{
+					tmp += tmp_A[j][l] * tmp_B[l][k];
+				}
+				multiplication_result[j][k] = tmp;
+			}
+		}
+
+		for (int i = 0; i < block_size; i++)
+		{
+			for (int j = 0; j < block_size; j++)
+			{
+				tmp_C[i][j] += multiplication_result[i][j];
+			}
+		}
+
+		MPI_Cart_shift(comm_cart, 1, 1, &left, &right);
+		MPI_Cart_shift(comm_cart, 0, 1, &up, &down);
+
+		MPI_Sendrecv_replace(&(tmp_A[0][0]), block_size * block_size, MPI_INT, left, 1, right, 1, comm_cart, MPI_STATUS_IGNORE);
+		MPI_Sendrecv_replace(&(tmp_B[0][0]), block_size * block_size, MPI_INT, up, 1, down, 1, comm_cart, MPI_STATUS_IGNORE);
+	}
+
+	// result gathering
+
+	MPI_Gatherv(&(tmp_C[0][0]), N * N / world_size, MPI_INT, global_C, send_counts, displacements, subarray_type, 0, MPI_COMM_WORLD);
+
+	if (world_rank == 0)
+	{
+		print_matrix(C, N);
+	}
+	MPI_Finalize();
+	return 0;
+}

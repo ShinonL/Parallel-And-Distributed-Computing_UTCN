@@ -1,0 +1,10 @@
+Universe = vanilla
+Executable = histogram.exe
+Input = process_$(PROCESS).in.txt
+Log = histograms_$(PROCESS).log.txt
+Output = histogram_$(PROCESS).out.txt 
+Error = histogram_$(PROCESS).err.txt
+transfer_input_files = process_$(PROCESS).in.txt
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+Queue 5

@@ -1,0 +1,9 @@
+Universe = vanilla
+Executable = gather_results.exe
+Log = gather_results.log.txt
+Output = gather_results.out.txt 
+Error = gather_results.err.txt
+transfer_input_files = histogram_0.out.txt, histogram_1.out.txt, histogram_2.out.txt, histogram_3.out.txt, histogram_4.out.txt
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+Queue

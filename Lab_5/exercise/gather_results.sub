@@ -1,0 +1,9 @@
+Universe = vanilla
+Executable = process_prime.exe
+Log = process_$(PROCESS).log.txt
+Output = process_$(PROCESS).out.txt
+Error = process_$(PROCESS).err.txt
+transfer_input_files = process_0.out.txt, process_1.out.txt, process_2.out.txt, process_3.out.txt
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+Queue

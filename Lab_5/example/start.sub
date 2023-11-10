@@ -1,0 +1,9 @@
+Universe = vanilla
+Executable = job.bat
+Arguments = start
+Log = start.log.txt
+Output = start.out.txt
+Error = start.err.txt
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+Queue 

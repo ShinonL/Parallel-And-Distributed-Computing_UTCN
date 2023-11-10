@@ -1,0 +1,154 @@
+000 (064.000.000) 2023-04-06 23:26:01 Job submitted from host: <192.168.0.104:9618?addrs=192.168.0.104-9618&alias=Asus-Laura&noUDP&sock=schedd_15484_10e0>
+    DAG Node: Setup
+...
+001 (064.000.000) 2023-04-06 23:26:20 Job executing on host: <192.168.0.104:9618?addrs=192.168.0.104-9618&alias=Asus-Laura&noUDP&sock=startd_15484_10e0>
+...
+005 (064.000.000) 2023-04-06 23:26:21 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	3656  -  Run Bytes Sent By Job
+	60566  -  Run Bytes Received By Job
+	3656  -  Total Bytes Sent By Job
+	60566  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :                 1         1 
+	   Disk (KB)            :       72       75  27717470 
+	   Memory (MB)          :        2        1      2010 
+
+	Job terminated of its own accord at 2023-04-06T20:26:21Z with exit-code 0.
+...
+000 (065.000.000) 2023-04-06 23:26:26 Job submitted from host: <192.168.0.104:9618?addrs=192.168.0.104-9618&alias=Asus-Laura&noUDP&sock=schedd_15484_10e0>
+    DAG Node: Process
+...
+000 (065.001.000) 2023-04-06 23:26:26 Job submitted from host: <192.168.0.104:9618?addrs=192.168.0.104-9618&alias=Asus-Laura&noUDP&sock=schedd_15484_10e0>
+    DAG Node: Process
+...
+000 (065.002.000) 2023-04-06 23:26:26 Job submitted from host: <192.168.0.104:9618?addrs=192.168.0.104-9618&alias=Asus-Laura&noUDP&sock=schedd_15484_10e0>
+    DAG Node: Process
+...
+000 (065.003.000) 2023-04-06 23:26:26 Job submitted from host: <192.168.0.104:9618?addrs=192.168.0.104-9618&alias=Asus-Laura&noUDP&sock=schedd_15484_10e0>
+    DAG Node: Process
+...
+000 (065.004.000) 2023-04-06 23:26:26 Job submitted from host: <192.168.0.104:9618?addrs=192.168.0.104-9618&alias=Asus-Laura&noUDP&sock=schedd_15484_10e0>
+    DAG Node: Process
+...
+001 (065.000.000) 2023-04-06 23:26:27 Job executing on host: <192.168.0.104:9618?addrs=192.168.0.104-9618&alias=Asus-Laura&noUDP&sock=startd_15484_10e0>
+...
+005 (065.000.000) 2023-04-06 23:26:28 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	768  -  Run Bytes Sent By Job
+	55143  -  Run Bytes Received By Job
+	768  -  Total Bytes Sent By Job
+	55143  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :                 1         1 
+	   Disk (KB)            :       64       75  27717470 
+	   Memory (MB)          :        2        1      2010 
+
+	Job terminated of its own accord at 2023-04-06T20:26:27Z with exit-code 0.
+...
+001 (065.001.000) 2023-04-06 23:26:30 Job executing on host: <192.168.0.104:9618?addrs=192.168.0.104-9618&alias=Asus-Laura&noUDP&sock=startd_15484_10e0>
+...
+005 (065.001.000) 2023-04-06 23:26:30 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	768  -  Run Bytes Sent By Job
+	55145  -  Run Bytes Received By Job
+	768  -  Total Bytes Sent By Job
+	55145  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :                 1         1 
+	   Disk (KB)            :       64       75  27717470 
+	   Memory (MB)          :        2        1      2010 
+
+	Job terminated of its own accord at 2023-04-06T20:26:30Z with exit-code 0.
+...
+001 (065.002.000) 2023-04-06 23:26:33 Job executing on host: <192.168.0.104:9618?addrs=192.168.0.104-9618&alias=Asus-Laura&noUDP&sock=startd_15484_10e0>
+...
+005 (065.002.000) 2023-04-06 23:26:33 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	768  -  Run Bytes Sent By Job
+	55147  -  Run Bytes Received By Job
+	768  -  Total Bytes Sent By Job
+	55147  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :                 1         1 
+	   Disk (KB)            :       64       75  27717470 
+	   Memory (MB)          :        2        1      2010 
+
+	Job terminated of its own accord at 2023-04-06T20:26:33Z with exit-code 0.
+...
+001 (065.003.000) 2023-04-06 23:26:35 Job executing on host: <192.168.0.104:9618?addrs=192.168.0.104-9618&alias=Asus-Laura&noUDP&sock=startd_15484_10e0>
+...
+005 (065.003.000) 2023-04-06 23:26:36 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	768  -  Run Bytes Sent By Job
+	55140  -  Run Bytes Received By Job
+	768  -  Total Bytes Sent By Job
+	55140  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :                 1         1 
+	   Disk (KB)            :       64       75  27717470 
+	   Memory (MB)          :        2        1      2010 
+
+	Job terminated of its own accord at 2023-04-06T20:26:36Z with exit-code 0.
+...
+001 (065.004.000) 2023-04-06 23:26:38 Job executing on host: <192.168.0.104:9618?addrs=192.168.0.104-9618&alias=Asus-Laura&noUDP&sock=startd_15484_10e0>
+...
+005 (065.004.000) 2023-04-06 23:26:38 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	768  -  Run Bytes Sent By Job
+	55146  -  Run Bytes Received By Job
+	768  -  Total Bytes Sent By Job
+	55146  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :                 1         1 
+	   Disk (KB)            :       64       75  27717470 
+	   Memory (MB)          :        2        1      2010 
+
+	Job terminated of its own accord at 2023-04-06T20:26:38Z with exit-code 0.
+...
+000 (066.000.000) 2023-04-06 23:26:46 Job submitted from host: <192.168.0.104:9618?addrs=192.168.0.104-9618&alias=Asus-Laura&noUDP&sock=schedd_15484_10e0>
+    DAG Node: GatherResults
+...
+001 (066.000.000) 2023-04-06 23:26:47 Job executing on host: <192.168.0.104:9618?addrs=192.168.0.104-9618&alias=Asus-Laura&noUDP&sock=startd_15484_10e0>
+...
+005 (066.000.000) 2023-04-06 23:26:48 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	2962  -  Run Bytes Sent By Job
+	59291  -  Run Bytes Received By Job
+	2962  -  Total Bytes Sent By Job
+	59291  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :                 1         1 
+	   Disk (KB)            :       70       75  27717470 
+	   Memory (MB)          :        2        1      2010 
+
+	Job terminated of its own accord at 2023-04-06T20:26:47Z with exit-code 0.
+...

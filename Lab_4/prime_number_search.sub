@@ -1,0 +1,10 @@
+Universe = vanilla
+Executable = prime_number_search.exe
+Input = interval_$(PROCESS).txt
+Log = prime_$(PROCESS).log.txt
+Output = prime_$(PROCESS).out.txt
+Error = prime_$(PROCESS).err.txt
+transfer_input_files = interval_$(PROCESS).txt
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+Queue 5

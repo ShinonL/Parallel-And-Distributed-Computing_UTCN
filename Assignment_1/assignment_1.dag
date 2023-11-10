@@ -1,0 +1,6 @@
+JOB Setup setup.sub
+JOB Process histogram.sub
+JOB GatherResults gather_results.sub
+
+PARENT Setup CHILD Process
+PARENT Process CHILD GatherResults 

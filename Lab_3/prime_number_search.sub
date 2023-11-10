@@ -1,0 +1,8 @@
+Universe = vanilla
+Executable = prime_number_search.exe
+Arguments = 2 20
+Log = prime_number_search.log.txt
+Output = prime_number_search.out.txt
+Error = prime_number_search.err.txt
+when_to_transfer_output = ON_EXIT
+Queue

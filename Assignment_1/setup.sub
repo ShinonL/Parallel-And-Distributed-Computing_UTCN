@@ -1,0 +1,9 @@
+Universe = vanilla
+Executable = setup.exe
+Arguments = 5
+Log = setup.log.txt
+Error = setup.err.txt
+transfer_input_files = test_file.txt
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+Queue

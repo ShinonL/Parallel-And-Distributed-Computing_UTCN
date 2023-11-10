@@ -1,0 +1,15 @@
+000 (063.000.000) 2023-04-06 23:25:59 Job submitted from host: <192.168.0.104:9618?addrs=192.168.0.104-9618&alias=Asus-Laura&noUDP&sock=schedd_15484_10e0>
+...
+001 (063.000.000) 2023-04-06 23:25:59 Job executing on host: <192.168.0.104:9618?addrs=192.168.0.104-9618&alias=Asus-Laura&noUDP&sock=schedd_15484_10e0>
+...
+005 (063.000.000) 2023-04-06 23:26:51 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	0  -  Total Bytes Received By Job
+...

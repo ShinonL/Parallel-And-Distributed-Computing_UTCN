@@ -1,0 +1,7 @@
+JOB Start start.sub
+JOB Work1 work1.sub
+JOB Work2 work2.sub
+JOB Final final.sub
+
+PARENT Start CHILD Work1 Work2
+PARENT Work1 Work2 CHILD Final

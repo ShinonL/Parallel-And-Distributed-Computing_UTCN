@@ -1,0 +1,15 @@
+007 (051.002.000) 2023-04-03 11:12:30 Shadow exception!
+	Error from slot5@Asus-Laura: SHADOW at 192.168.0.104 failed to send file(s) to <192.168.0.104:61984>: |Error: reading from file D:\Facultate\An4_Sem2\PDC\Lab_5\exercise\process_2.in.txt: (errno 2) No such file or directory; STARTER failed to receive file(s) from <192.168.0.104:9618>
+	0  -  Run Bytes Sent By Job
+	56737  -  Run Bytes Received By Job
+...
+012 (051.002.000) 2023-04-03 11:12:32 Job was held.
+	Transfer input files failure at access point Asus-Laura while sending files to execution point slot5@Asus-Laura. Details: reading from file D:\Facultate\An4_Sem2\PDC\Lab_5\exercise\process_2.in.txt: (errno 2) No such file or directory
+	Code 13 Subcode 2
+...
+009 (051.002.000) 2023-04-06 22:18:51 Job was aborted.
+	via condor_rm (by user laura)
+...
+009 (051.002.000) 2023-04-06 23:07:23 Job was aborted.
+	via condor_rm (by user laura)
+...

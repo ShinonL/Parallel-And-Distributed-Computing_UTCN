@@ -1,0 +1,6 @@
+JOB Setup setup.sub
+JOB Process process.sub
+JOB GatherResults gather_results.sub
+
+PARENT Start CHILD Process
+PARENT Process CHILD GatherResults

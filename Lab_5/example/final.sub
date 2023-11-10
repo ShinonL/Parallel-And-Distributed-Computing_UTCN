@@ -1,0 +1,10 @@
+Universe = vanilla
+Executable = job.bat
+Arguments = final
+Log = final.log.txt
+Output = final.out.txt
+Error = final.err.txt
+transfer_input_files = work1.out.txt,work2.out.txt
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+Queue 
